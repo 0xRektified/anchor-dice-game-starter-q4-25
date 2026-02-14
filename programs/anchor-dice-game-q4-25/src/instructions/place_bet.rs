@@ -1,6 +1,7 @@
 use anchor_lang::{prelude::*, system_program::{Transfer, transfer}};
 
 use crate::state::Bet;
+use crate::errors::DiceError;
 
 #[derive(Accounts)]
 #[instruction(seed:u128)]
@@ -28,6 +29,11 @@ pub struct PlaceBet<'info> {
 
 impl<'info> PlaceBet<'info> {
     pub fn create_bet(&mut self, bumps: &PlaceBetBumps, seed: u128, roll: u8, amount: u64) -> Result<()> {
+        require!(amount >= 10_000_000, DiceError::MinimumBet);
+        require!(amount <= 1_000_000_000, DiceError::MaximumBet);
+        require!(roll >= 2, DiceError::MinimumRoll);
+        require!(roll <= 96, DiceError::MaximumRoll);
+
         self.bet.set_inner(Bet{
             slot : Clock::get()?.slot,
             player: self.player.key(),
