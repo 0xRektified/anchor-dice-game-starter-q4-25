@@ -10,7 +10,7 @@ use instructions::*;
 declare_id!("J86V1Echaw6CB1aMbGVbmgCb37RUBcev9QmruuR91mma");
 
 #[program]
-pub mod anchor_dice_2024 {
+pub mod anchor_dice_game_q4_25 {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>, amount: u64) -> Result<()> {
