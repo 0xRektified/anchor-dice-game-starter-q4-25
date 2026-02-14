@@ -7,7 +7,7 @@ mod errors;
 
 use instructions::*;
 
-declare_id!("J86V1Echaw6CB1aMbGVbmgCb37RUBcev9QmruuR91mma");
+declare_id!("GTheSs69cAQekT2YCjwEh3TsZLe2TmmKQvA1bEWx61xg");
 
 #[program]
 pub mod anchor_dice_game_q4_25 {
